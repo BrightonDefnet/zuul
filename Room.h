@@ -13,8 +13,8 @@ using namespace std;
 class Room
 {
     public:
-        int _x;
-        int _y;
+        int _x; //x coordinate
+        int _y; //y coordinate
         string _dsc; //room description
         struct items { //items
             bool hasItems;

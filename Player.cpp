@@ -10,12 +10,11 @@ Player::Player()
 void Player::readInv()
 {
     cout << "\n--- Inventory ---" << endl;
-    if(inv.item1 == true) cout << " - item 1" << endl;
-    if(inv.item2 == true) cout << " - item 2" << endl;
-    if(inv.item3 == true) cout << " - item 3" << endl;
-    if(inv.item4 == true) cout << " - item 4" << endl;
-    if(inv.item5 == true) cout << " - item 5" << endl;
-    cout << "\n" << endl;
+    if(inv.item1 == true) cout << " - 1" << endl;
+    if(inv.item2 == true) cout << " - 2" << endl;
+    if(inv.item3 == true) cout << " - 3" << endl;
+    if(inv.item4 == true) cout << " - 4" << endl;
+    if(inv.item5 == true) cout << " - 5" << endl;
 }
 
 void Player::get(int i)
@@ -37,7 +36,7 @@ void Player::get(int i)
             inv.item5 = true;
             break;
         default:
-            cout << "switch block defaulted" << endl;
+            cout << "\nswitch block defaulted" << endl;
     }
 }
 
@@ -60,7 +59,7 @@ void Player::drop(int i)
             inv.item5 = false;
             break;
         default:
-            cout << "switch block defaulted" << endl;
+            cout << "\nswitch block defaulted" << endl;
             break;
     }
 }

@@ -55,11 +55,11 @@ void Room::Info()
     cout << "\nDescription:\n" << _dsc << endl;
     //items
     cout << "\n--- Items in Room ---" << endl;
-    if (inRoom.item1 == true) cout << "- Item 1" << endl;
-    if (inRoom.item2 == true) cout << "- Item 2" << endl;
-    if (inRoom.item3 == true) cout << "- Item 3" << endl;
-    if (inRoom.item4 == true) cout << "- Item 4" << endl;
-    if (inRoom.item5 == true) cout << "- Item 5" << endl;
+    if (inRoom.item1 == true) cout << "- 1" << endl;
+    if (inRoom.item2 == true) cout << "- 2" << endl;
+    if (inRoom.item3 == true) cout << "- 3" << endl;
+    if (inRoom.item4 == true) cout << "- 4" << endl;
+    if (inRoom.item5 == true) cout << "- 5" << endl;
 
     //exits
     cout << "\n--- Exits ---" << endl;

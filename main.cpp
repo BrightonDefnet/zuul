@@ -8,6 +8,7 @@
 #include "Room.h"
 using namespace std;
 
+//initialize the maze
 void buildMaze(Room maze[5][7])
 {
     //(x, y, description, starting item, north, south, east, west)
@@ -146,7 +147,6 @@ void drop(Room maze[5][7], pair<int,int> currentRoom, Player *player)
 //main function
 int main()
 {
-    /* testing
     //build the maze and start in the starting room
     Room maze[5][7];
     Player player;
@@ -154,27 +154,48 @@ int main()
     pair<int,int> currentRoom;
     currentRoom.first = 2;
     currentRoom.second = 6;
-    cout << "starting in the starting room" << endl;
+    move(maze, currentRoom);
+    bool playing = true;
+    printf("\033c");
     move(maze, currentRoom);
 
-    //move to the next room
-    cout << "moving to the next room" << endl;
-    ++currentRoom.first;
-    move(maze, currentRoom);
-
-    //pick up the item
-    player.readInv();
-    take(maze, currentRoom, &player);
-    player.readInv();
-    move(maze, currentRoom);
-
-
-    //move to the first room and drop the item
-    cout << "moving the the last room and dropping the item" << endl;
-    --currentRoom.first;
-    move(maze, currentRoom);
-    drop(maze, currentRoom, &player);
-    player.readInv();
-    move(maze, currentRoom);
-    */
+    //while playing
+    while (playing)
+    {
+        string command;
+        cout << "\nwhat would you like to do?\n(north, south, east, west, take, drop, inventory, check, quit)" << endl;
+        cin >> command;
+        if (command == "north" && maze[currentRoom.first][currentRoom.second].exits[1] == true) {
+            --currentRoom.second;
+            printf("\033c");
+            move(maze, currentRoom);
+        } else if (command == "south" && maze[currentRoom.first][currentRoom.second].exits[2] == true) {
+            ++currentRoom.second;
+            printf("\033c");
+            move(maze, currentRoom);
+        } else if (command == "east" && maze[currentRoom.first][currentRoom.second].exits[3] == true) {
+            ++currentRoom.first;
+            printf("\033c");
+            move(maze, currentRoom);
+        } else if (command == "west" && maze[currentRoom.first][currentRoom.second].exits[4] == true) {
+            --currentRoom.first;
+            printf("\033c");
+            move(maze, currentRoom);
+        } else if (command == "take") {
+            take(maze, currentRoom, &player);
+        } else if (command == "drop") {
+            drop(maze, currentRoom, &player);
+        } else if (command == "inventory") {
+            player.readInv();
+        } else if (command == "check") {
+            printf("\033c");
+            move(maze, currentRoom);
+        } else if (command == "quit") {
+            playing = false;
+        } else {
+            printf("\033c");
+            cout << "\nnot a valid command!" << endl;
+            move(maze, currentRoom);
+        }
+    }
 }
