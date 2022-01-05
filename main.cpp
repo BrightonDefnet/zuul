@@ -144,6 +144,22 @@ void drop(Room maze[5][7], pair<int,int> currentRoom, Player *player)
     }
 }
 
+//check for a win condition
+bool checkWin(Player *player) {
+   if (
+           player->inv.item1 == true
+           && player->inv.item2 == true
+           && player->inv.item3 == true
+           && player->inv.item4 == true
+           && player->inv.item5 == true
+           ) {
+       cout << "\nAll items collected. You win!" << endl;
+       return false;
+   } else {
+       return true;
+   }
+}
+
 //main function
 int main()
 {
@@ -160,7 +176,7 @@ int main()
     move(maze, currentRoom);
 
     //while playing
-    while (playing)
+    while (playing == true)
     {
         string command;
         cout << "\nwhat would you like to do?\n(north, south, east, west, take, drop, inventory, check, quit)" << endl;
@@ -183,6 +199,7 @@ int main()
             move(maze, currentRoom);
         } else if (command == "take") {
             take(maze, currentRoom, &player);
+            playing = checkWin(&player);
         } else if (command == "drop") {
             drop(maze, currentRoom, &player);
         } else if (command == "inventory") {
